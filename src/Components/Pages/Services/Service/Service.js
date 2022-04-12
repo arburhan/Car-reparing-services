@@ -16,8 +16,10 @@ const Service = ({ service }) => {
                     <Card.Text className="fs-4">
                         Price: {price}
                     </Card.Text>
-
                 </Card.Body>
+                <Card.Footer className='text-center bg-transparent'>
+                    <Button variant="primary">Book {name}</Button>
+                </Card.Footer>
             </Card>
 
         </div>
