@@ -13,7 +13,9 @@ function App() {
   return (
     <div>
       <Header></Header>
+      <Home></Home>
       <Routes>
+        {/* 
         <Route to='/' element={<Home></Home>}></Route>
         <Route to='/home' element={<Home></Home>}></Route>
         <Route to='/about' element={<About></About>}></Route>
@@ -21,7 +23,7 @@ function App() {
         <Route to='/contact' element={<Contacts></Contacts>}></Route>
         <Route to='/pricing' element={<Pricing></Pricing>}></Route>
         <Route to='/services' element={<Pricing></Pricing>}></Route>
-        <Route to='/shop' element={<Shop></Shop>}></Route>
+        <Route to='/shop' element={<Shop></Shop>}></Route> */}
       </Routes>
       <Footer></Footer>
     </div>
