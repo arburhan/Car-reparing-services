@@ -11,7 +11,8 @@ const Register = () => {
         e.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        console.log(email, password);
+        const confirmPassword = ConfirmPasswordRef.current.value;
+        console.log(email, password, confirmPassword);
     }
     const navigate = useNavigate();
     const NavigateToLogin = () => {
@@ -25,7 +26,7 @@ const Register = () => {
                 <Form onSubmit={handaleFormSubmit} >
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
-                        <Form.Control ref={emailRef} type="email" placeholder="Enter email" />
+                        <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
                         <Form.Text className="text-muted">
                             We'll never share your email with anyone else.
                         </Form.Text>
@@ -33,11 +34,11 @@ const Register = () => {
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
                         <Form.Label>New Password</Form.Label>
-                        <Form.Control ref={passwordRef} type="password" placeholder="New Password" />
+                        <Form.Control ref={passwordRef} type="password" placeholder="New Password" required />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
                         <Form.Label>Confirm Password</Form.Label>
-                        <Form.Control ref={ConfirmPasswordRef} type="password" placeholder="Confirm Password" />
+                        <Form.Control ref={ConfirmPasswordRef} type="password" placeholder="Confirm Password" required />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <Form.Check type="checkbox" label="Check me out" />
@@ -46,7 +47,7 @@ const Register = () => {
                         Submit
                     </Button>
                 </Form>
-                <p>Already have an accout? <span onClick={NavigateToLogin} style={{ cursor: 'pointer', fontSize: '18px' }} className='text-warning' >Please log in</span></p>
+                <p>Already have an accout? <span onClick={NavigateToLogin} style={{ cursor: 'pointer', fontSize: '18px' }} className='text-danger' >Please log in</span></p>
             </div>
         </div>
     );
