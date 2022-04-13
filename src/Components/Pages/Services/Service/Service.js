@@ -3,7 +3,11 @@ import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card'
 
 const Service = ({ service }) => {
-    const { name, price, description, img } = service;
+    const { id, name, price, description, img } = service;
+
+    const handaleServiceDetails = id => {
+
+    }
     return (
         <div>
             <Card>
@@ -18,7 +22,7 @@ const Service = ({ service }) => {
                     </Card.Text>
                 </Card.Body>
                 <Card.Footer className='text-center bg-transparent'>
-                    <Button variant="primary">Book {name}</Button>
+                    <Button onClick={() => handaleServiceDetails(id)} variant="primary">Book {name}</Button>
                 </Card.Footer>
             </Card>
 
