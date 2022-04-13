@@ -7,6 +7,7 @@ import Home from './Components/Pages/Home/Home';
 import Login from './Components/Pages/Login/Login';
 import NotFound from './Components/Pages/NotFound/NotFound';
 import Pricing from './Components/Pages/Pricing/Pricing';
+import Register from './Components/Pages/Register/Register';
 import ServiceDetails from './Components/Pages/Services/ServiceDetails/ServiceDetails';
 import Services from './Components/Pages/Services/Services';
 import Shop from './Components/Pages/Shop/Shop';
@@ -27,6 +28,7 @@ function App() {
         <Route path='/shop' element={<Shop></Shop>}></Route>
         <Route path='/services/:serviceId' element={<ServiceDetails></ServiceDetails>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
+        <Route path='/register' element={<Register></Register>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
