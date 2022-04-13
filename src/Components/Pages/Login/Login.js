@@ -20,8 +20,9 @@ const Login = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         signInWithEmailAndPassword(email, password);
+    }
+    if (user) {
         navigate('/home');
-        console.log(email, password);
     }
 
     const NavigateToRegister = () => {

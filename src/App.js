@@ -2,12 +2,14 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import About from './Components/Pages/About/About';
 import Blog from './Components/Pages/Blog/Blog';
+import Checkout from './Components/Pages/Checkout/Checkout';
 import Contacts from './Components/Pages/Contacts/Contacts';
 import Home from './Components/Pages/Home/Home';
 import Login from './Components/Pages/Login/Login';
 import NotFound from './Components/Pages/NotFound/NotFound';
 import Pricing from './Components/Pages/Pricing/Pricing';
 import Register from './Components/Pages/Register/Register';
+import RequerAuth from './Components/Pages/RequerAuth/RequerAuth';
 import ServiceDetails from './Components/Pages/Services/ServiceDetails/ServiceDetails';
 import Services from './Components/Pages/Services/Services';
 import Shop from './Components/Pages/Shop/Shop';
@@ -29,6 +31,11 @@ function App() {
         <Route path='/services/:serviceId' element={<ServiceDetails></ServiceDetails>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
+        <Route path='/checkout' element={
+          <RequerAuth>
+            <Checkout></Checkout>
+          </RequerAuth>
+        }></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
