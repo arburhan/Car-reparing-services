@@ -1,18 +1,35 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import { useNavigate } from 'react-router-dom';
+import auth from '../../../firebase.init';
+import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 const Register = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const ConfirmPasswordRef = useRef('');
+    const [
+        createUserWithEmailAndPassword,
+        user,
+        loading,
+        error,
+    ] = useCreateUserWithEmailAndPassword(auth);
+
+
     const handaleFormSubmit = e => {
         e.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         const confirmPassword = ConfirmPasswordRef.current.value;
-        console.log(email, password, confirmPassword);
+        createUserWithEmailAndPassword(email, password);
+
+        // if (email !== confirmPassword) {
+        //     console.log(email, password, confirmPassword);
+        //     setError('password and confirmpassword not match');
+        //     return;
+        // }
+
     }
     const navigate = useNavigate();
     const NavigateToLogin = () => {
@@ -40,6 +57,7 @@ const Register = () => {
                         <Form.Label>Confirm Password</Form.Label>
                         <Form.Control ref={ConfirmPasswordRef} type="password" placeholder="Confirm Password" required />
                     </Form.Group>
+                    {/* <p className='text-danger'>{error}</p> */}
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
                         <Form.Check type="checkbox" label="Check me out" />
                     </Form.Group>
