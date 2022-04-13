@@ -1,11 +1,14 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card'
+import { useNavigate } from 'react-router-dom';
 
 const Service = ({ service }) => {
     const { id, name, price, description, img } = service;
+    const navigate = useNavigate();
 
     const handaleServiceDetails = id => {
+        navigate(`/services/${id}`)
 
     }
     return (
