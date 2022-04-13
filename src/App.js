@@ -13,17 +13,15 @@ function App() {
   return (
     <div>
       <Header></Header>
-      <Home></Home>
       <Routes>
-        {/* 
-        <Route to='/' element={<Home></Home>}></Route>
-        <Route to='/home' element={<Home></Home>}></Route>
-        <Route to='/about' element={<About></About>}></Route>
-        <Route to='/blog' element={<Blog></Blog>}></Route>
-        <Route to='/contact' element={<Contacts></Contacts>}></Route>
-        <Route to='/pricing' element={<Pricing></Pricing>}></Route>
-        <Route to='/services' element={<Pricing></Pricing>}></Route>
-        <Route to='/shop' element={<Shop></Shop>}></Route> */}
+        <Route path='/' element={<Home></Home>}></Route>
+        <Route path='/home' element={<Home></Home>}></Route>
+        <Route path='/about' element={<About></About>}></Route>
+        <Route path='/blog' element={<Blog></Blog>}></Route>
+        <Route path='/contact' element={<Contacts></Contacts>}></Route>
+        <Route path='/pricing' element={<Pricing></Pricing>}></Route>
+        <Route path='/services' element={<Pricing></Pricing>}></Route>
+        <Route path='/shop' element={<Shop></Shop>}></Route>
       </Routes>
       <Footer></Footer>
     </div>
