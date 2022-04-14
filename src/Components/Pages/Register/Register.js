@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form'
 import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import Social from '../Social/Social';
 
 const Register = () => {
     const emailRef = useRef('');
@@ -62,8 +63,9 @@ const Register = () => {
                         Submit
                     </Button>
                 </Form>
-                <p>Already have an accout? <span onClick={NavigateToLogin} style={{ cursor: 'pointer', fontSize: '18px' }} className='text-danger' >Please log in</span></p>
+                <p className='my-4'>Already have an accout? <span onClick={NavigateToLogin} style={{ cursor: 'pointer', fontSize: '18px' }} className='text-danger' >Please log in</span></p>
             </div>
+            <Social></Social>
         </div>
     );
 };

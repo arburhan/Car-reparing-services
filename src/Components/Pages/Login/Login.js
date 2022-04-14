@@ -50,7 +50,7 @@ const Login = () => {
                         Submit
                     </Button>
                 </Form>
-                <p>New on Genius Car? <span onClick={NavigateToRegister} style={{ cursor: 'pointer', fontSize: '18px' }} className='text-danger' >Please Register</span></p>
+                <p className='my-4'>New on Genius Car? <span onClick={NavigateToRegister} style={{ cursor: 'pointer', fontSize: '18px' }} className='text-danger' >Please Register</span></p>
             </div>
             <Social></Social>
         </div>
