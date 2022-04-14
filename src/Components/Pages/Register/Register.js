@@ -44,9 +44,6 @@ const Register = () => {
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
-                        <Form.Text className="text-muted">
-                            We'll never share your email with anyone else.
-                        </Form.Text>
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -59,9 +56,9 @@ const Register = () => {
                     </Form.Group>
                     {/* <p className='text-danger'>{error}</p> */}
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
+                        <Form.Check type="checkbox" label="accept terms and conditions" />
                     </Form.Group>
-                    <Button variant="primary" type="Register">
+                    <Button className='w-50 d-block mx-auto' variant="primary" type="Register">
                         Submit
                     </Button>
                 </Form>
