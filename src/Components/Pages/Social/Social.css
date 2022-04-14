@@ -1,0 +1,11 @@
+.social-btn {
+    width: 400px;
+}
+
+@media screen and (max-width:668px) {
+    .social-btn {
+        width: 200px;
+
+    }
+
+}

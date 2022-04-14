@@ -4,6 +4,8 @@ import Form from 'react-bootstrap/Form'
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
+import Social from '../Social/Social';
+import './Login.css';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -31,7 +33,7 @@ const Login = () => {
         navigate('/register');
     }
     return (
-        <div className='container w-50 mx-auto'>
+        <div className='container mx-auto w-50'>
             <h2 className='text-center text-primary mt-4' >Log in</h2>
             <div>
                 <Form onSubmit={handaleFormSubmit} >
@@ -50,6 +52,7 @@ const Login = () => {
                 </Form>
                 <p>New on Genius Car? <span onClick={NavigateToRegister} style={{ cursor: 'pointer', fontSize: '18px' }} className='text-danger' >Please Register</span></p>
             </div>
+            <Social></Social>
         </div>
     );
 };
