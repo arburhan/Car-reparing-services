@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import Social from '../Social/Social';
 import './Login.css';
@@ -19,6 +19,9 @@ const Login = () => {
         loading,
         error,
     ] = useSignInWithEmailAndPassword(auth);
+    const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
+
+
     const handaleFormSubmit = e => {
         e.preventDefault();
         const email = emailRef.current.value;
@@ -31,6 +34,12 @@ const Login = () => {
 
     const NavigateToRegister = () => {
         navigate('/register');
+    }
+    const resetPassword = async () => {
+        const email = emailRef.current.value;
+        await sendPasswordResetEmail(email);
+        alert('mail sent. check on inbox or spam')
+
     }
     return (
         <div className='container mx-auto w-50'>
@@ -50,7 +59,8 @@ const Login = () => {
                         Submit
                     </Button>
                 </Form>
-                <p className='my-4'>New on Genius Car? <span onClick={NavigateToRegister} style={{ cursor: 'pointer', fontSize: '18px' }} className='text-danger' >Please Register</span></p>
+                <p className='mt-4'>New on Genius Car? <span onClick={NavigateToRegister} style={{ cursor: 'pointer', fontSize: '18px' }} className='text-primary' >Please Register</span></p>
+                <p className=''>Forget password? <span onClick={resetPassword} style={{ cursor: 'pointer', fontSize: '18px' }} className='text-primary' >Reset Password</span></p>
             </div>
             <Social></Social>
         </div>
