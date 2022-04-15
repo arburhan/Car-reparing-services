@@ -10,6 +10,7 @@ const Register = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const ConfirmPasswordRef = useRef('');
+    const [agree, setAgree] = useState();
     const [
         createUserWithEmailAndPassword,
         user,
@@ -23,7 +24,10 @@ const Register = () => {
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
         const confirmPassword = ConfirmPasswordRef.current.value;
-        createUserWithEmailAndPassword(email, password);
+        // const agree = event.terms.target.checked;
+        if (agree) {
+            createUserWithEmailAndPassword(email, password);
+        }
 
         // if (email !== confirmPassword) {
         //     console.log(email, password, confirmPassword);
@@ -35,7 +39,6 @@ const Register = () => {
     const navigate = useNavigate();
     const NavigateToLogin = () => {
         navigate('/login');
-
     }
     return (
         <div className='container w-50 mx-auto'>
@@ -56,10 +59,9 @@ const Register = () => {
                         <Form.Control ref={ConfirmPasswordRef} type="password" placeholder="Confirm Password" required />
                     </Form.Group>
                     {/* <p className='text-danger'>{error}</p> */}
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="accept terms and conditions" />
-                    </Form.Group>
-                    <Button className='w-50 d-block mx-auto' variant="primary" type="Register">
+                    <input className='me-2 mb-3' onClick={() => { setAgree(!agree) }} type="checkbox" name="terms" id="terms" />
+                    <label className={user ? 'text-primary' : 'text-danger'} htmlFor="terms">Accept terms and conditions</label>
+                    <Button disabled={!agree} className='w-50 d-block mx-auto' variant="primary" type="Register">
                         Submit
                     </Button>
                 </Form>
