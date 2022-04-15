@@ -6,6 +6,8 @@ import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-
 import auth from '../../../firebase.init';
 import Social from '../Social/Social';
 import './Login.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
     const emailRef = useRef('');
@@ -38,7 +40,7 @@ const Login = () => {
     const resetPassword = async () => {
         const email = emailRef.current.value;
         await sendPasswordResetEmail(email);
-        alert('mail sent. check on inbox or spam')
+        toast('mail sent. check on inbox or spam')
 
     }
     return (
@@ -59,10 +61,11 @@ const Login = () => {
                         Submit
                     </Button>
                 </Form>
-                <p className='mt-4'>New on Genius Car? <span onClick={NavigateToRegister} style={{ cursor: 'pointer', fontSize: '18px' }} className='text-primary' >Please Register</span></p>
-                <p className=''>Forget password? <span onClick={resetPassword} style={{ cursor: 'pointer', fontSize: '18px' }} className='text-primary' >Reset Password</span></p>
+                <p className='mt-4'>New on Genius Car? <button onClick={NavigateToRegister} style={{ cursor: 'pointer', fontSize: '18px' }} className='text-primary bg-transparent border-0' >Please Register</button></p>
+                <p className=''>Forget password? <button onClick={resetPassword} style={{ cursor: 'pointer', fontSize: '18px' }} className='text-primary bg-transparent border-0' >Reset Password</button></p>
             </div>
             <Social></Social>
+            <ToastContainer />
         </div>
     );
 };

@@ -2,12 +2,15 @@ import React from 'react';
 import { useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import Loading from '../../Shared/Loading/Loading';
 import './Social.css';
 
 const Social = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     const [signinWithGithub, userGit, loadingGit, errorGit] = useSignInWithGithub(auth);
     const [signinWithFacebook, userFb, loadingFb, errorFb] = useSignInWithFacebook(auth);
+    const navigate = useNavigate();
+
     const googleSignIn = () => {
         signInWithGoogle();
     }
@@ -17,13 +20,15 @@ const Social = () => {
     const githubSignIn = () => {
         signinWithGithub();
     }
+    if (loading || loadingFb || loadingGit) {
+        return <Loading></Loading>;
+    }
     let errorMsg;
     if (error || errorGit || errorFb) {
         errorMsg = <div>
             <p className='text-danger' >Error: {error?.message} {errorGit?.message} {errorFb?.message}</p>
         </div>
     }
-    const navigate = useNavigate();
     if (user || userGit || userFb) {
         navigate('/home');
     }

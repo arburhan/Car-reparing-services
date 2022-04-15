@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import Social from '../Social/Social';
+import Loading from '../../Shared/Loading/Loading';
 
 const Register = () => {
     const emailRef = useRef('');
@@ -32,6 +33,9 @@ const Register = () => {
             alert('Updated profile');
             navigate('/home');
 
+        }
+        if (loading) {
+            return <Loading></Loading>
         }
 
         // if (email !== confirmPassword) {
