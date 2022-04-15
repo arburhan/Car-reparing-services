@@ -39,8 +39,13 @@ const Login = () => {
     }
     const resetPassword = async () => {
         const email = emailRef.current.value;
-        await sendPasswordResetEmail(email);
-        toast('mail sent. check on inbox or spam')
+        if (email) {
+            await sendPasswordResetEmail(email);
+            toast('mail sent. check on inbox or spam');
+        }
+        else {
+            toast('please enter your email on mail field')
+        }
 
     }
     return (
