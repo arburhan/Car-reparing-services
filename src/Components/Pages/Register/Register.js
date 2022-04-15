@@ -3,30 +3,35 @@ import { Button } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form'
 import { useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import Social from '../Social/Social';
 
 const Register = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
-    const ConfirmPasswordRef = useRef('');
+    const nameRef = useRef('');
     const [agree, setAgree] = useState();
+    const [updateProfile, updating, profileError] = useUpdateProfile(auth);
     const [
         createUserWithEmailAndPassword,
         user,
         loading,
         error,
-    ] = useCreateUserWithEmailAndPassword(auth);
+    ] = useCreateUserWithEmailAndPassword(auth, { emailVerificationOptions: true });
 
 
-    const handaleFormSubmit = e => {
+    const handaleFormSubmit = async (e) => {
         e.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
-        const confirmPassword = ConfirmPasswordRef.current.value;
+        const yourName = nameRef.current.value;
         // const agree = event.terms.target.checked;
         if (agree) {
-            createUserWithEmailAndPassword(email, password);
+            await createUserWithEmailAndPassword(email, password);
+            await updateProfile({ displayName: yourName });
+            alert('Updated profile');
+            navigate('/home');
+
         }
 
         // if (email !== confirmPassword) {
@@ -45,6 +50,10 @@ const Register = () => {
             <h2 className='text-center text-primary mt-4'>Register</h2>
             <div>
                 <Form onSubmit={handaleFormSubmit} >
+                    <Form.Group className="mb-3" controlId="formBasicName">
+                        <Form.Label>Your Name</Form.Label>
+                        <Form.Control ref={nameRef} type="text" placeholder="Your Name" required />
+                    </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control ref={emailRef} type="email" placeholder="Enter email" required />
@@ -54,10 +63,7 @@ const Register = () => {
                         <Form.Label>New Password</Form.Label>
                         <Form.Control ref={passwordRef} type="password" placeholder="New Password" required />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicConfirmPassword">
-                        <Form.Label>Confirm Password</Form.Label>
-                        <Form.Control ref={ConfirmPasswordRef} type="password" placeholder="Confirm Password" required />
-                    </Form.Group>
+
                     {/* <p className='text-danger'>{error}</p> */}
                     <input className='me-2 mb-3' onClick={() => { setAgree(!agree) }} type="checkbox" name="terms" id="terms" />
                     <label className={user ? 'text-primary' : 'text-danger'} htmlFor="terms">Accept terms and conditions</label>
