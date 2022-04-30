@@ -25,7 +25,13 @@ const Header = () => {
                             <Nav.Link href="home#experts">Experts</Nav.Link>
                             <Nav.Link as={Link} to="/blog">Blog</Nav.Link>
                             <Nav.Link as={Link} to="/about" >About</Nav.Link>
-                            <Nav.Link as={Link} to="/contact">Contact</Nav.Link>
+                            <Nav.Link as={Link} to="/contact">Contact</Nav.Link>{
+                                user && <>
+                                    <Nav.Link as={Link} to="/addservice">Add</Nav.Link>
+                                    <Nav.Link as={Link} to="/manageservice">Manage</Nav.Link>
+
+                                </>
+                            }
                             {
                                 user ?
                                     <button onClick={handaleSignOut} className="bg-transparent border-0 text-white fw-bold" >Sign out</button>

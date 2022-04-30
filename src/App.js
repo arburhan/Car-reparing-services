@@ -8,6 +8,7 @@ import Addservice from './Components/Pages/Checkout/Checkout';
 import Contacts from './Components/Pages/Contacts/Contacts';
 import Home from './Components/Pages/Home/Home';
 import Login from './Components/Pages/Login/Login';
+import ManageServices from './Components/Pages/ManageServices/ManageServices';
 import NotFound from './Components/Pages/NotFound/NotFound';
 import Pricing from './Components/Pages/Pricing/Pricing';
 import Register from './Components/Pages/Register/Register';
@@ -42,6 +43,11 @@ function App() {
         <Route path='/addservice' element={
           <RequerAuth>
             <AddService></AddService>
+          </RequerAuth>
+        }></Route>
+        <Route path='/manageservices' element={
+          <RequerAuth>
+            <ManageServices></ManageServices>
           </RequerAuth>
         }></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
